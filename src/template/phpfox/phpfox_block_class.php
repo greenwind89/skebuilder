@@ -9,10 +9,10 @@ defined('PHPFOX') or exit('NO DICE!');
  * 
  * 
  * @copyright		[YOUNET_COPPYRIGHT]
- * @author  		Minh truong
- * @package  		Module_Blog
+ * @author  		[skesubs:author]
+ * @package  		Module_[skesubs:module]
  */
-class Blog_Component_Block_Categories extends Phpfox_Component 
+class [skesubs:module]_Component_Block_Categories extends Phpfox_Component 
 {
 	
 }

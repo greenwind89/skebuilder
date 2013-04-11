@@ -61,7 +61,9 @@ Class Skeleton {
 			'index.html'
 		);
 
-
+	private $phpfox_substitution_1 = array(
+		'[sb:module_name]' => 'mmtest'
+		);
 	/**
 	 * @todo: handle file, predefined template files 
 	 * return the stucture of predefined packages
@@ -82,6 +84,20 @@ Class Skeleton {
 		}
 	}
 
+	public function getSubstitution($package_type)
+	{
+		$package_type = strtolower($package_type);
+		switch ($package_type) {
+			case 'phpfox':
+					return $this->phpfox_substitution_1;
+				break;
+			
+			default:
+					return false;
+				break;
+		}
+	}
+	
 	public function setPhpfoxSkeleton($structure)
 	{
 		$this->phpfox_skeleton = $structure;

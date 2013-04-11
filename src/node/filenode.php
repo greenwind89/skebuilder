@@ -40,7 +40,7 @@ Class FileNode implements NodeAbstract{
 			return false;
 		}
 
-		// it is where the substitutions go 
+		// it is where the substitutions go a
 		if(!fwrite($file_handler, $template_file_string))
 		{
 			Skebuilder::addErrorMessage('file ' . $this->template_file . ' cannot be written');

@@ -122,7 +122,7 @@ Class Skebuilder {
 				//this is also leaf node
 				if(is_int($node))
 				{
-					// root is a integer, it means [1] => 'a_string' which will generete (array('a_string 	'))
+					// root is an integer, it means [1] => 'a_string' which will generete (array('a_string 	'))
 					// so its sub_node is a leaf node
 					$new_node = $this->getLeafNode($sub_node);
 					$root_node->add($new_node);
