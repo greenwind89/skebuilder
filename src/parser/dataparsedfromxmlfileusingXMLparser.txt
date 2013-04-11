@@ -1,0 +1,105 @@
+# Running in folder: E:\workspace\sublime2\skebuilder
+$ phpunit -c phpunit.xml E:\workspace\sublime2\skebuilder\tests\parserTest.php
+PHPUnit 3.7.10 by Sebastian Bergmann.
+
+Configuration read from E:\workspace\sublime2\skebuilder\phpunit.xml
+
+.array(2) {
+  ["data"]=>
+  array(2) {
+    ["skeleton_id"]=>
+    string(14) "phpfox_default"
+    ["description"]=>
+    string(0) ""
+  }
+  ["structure"]=>
+  array(1) {
+    ["node"]=>
+    array(3) {
+      ["type"]=>
+      string(6) "folder"
+      ["name"]=>
+      string(6) "upload"
+      ["node"]=>
+      array(2) {
+        [0]=>
+        array(3) {
+          ["type"]=>
+          string(6) "folder"
+          ["name"]=>
+          string(5) "test1"
+          ["node"]=>
+          array(3) {
+            ["type"]=>
+            string(6) "folder"
+            ["name"]=>
+            string(3) "xml"
+            ["node"]=>
+            array(3) {
+              [0]=>
+              array(3) {
+                ["type"]=>
+                string(4) "file"
+                ["name"]=>
+                string(13) "testfile1.php"
+                ["value"]=>
+                string(0) ""
+              }
+              [1]=>
+              array(3) {
+                ["type"]=>
+                string(4) "file"
+                ["name"]=>
+                string(13) "testfile2.php"
+                ["value"]=>
+                string(0) ""
+              }
+              [2]=>
+              array(4) {
+                ["type"]=>
+                string(4) "file"
+                ["name"]=>
+                string(24) "testfilewithtemplate.php"
+                ["template"]=>
+                string(4) "test"
+                ["value"]=>
+                string(0) ""
+              }
+            }
+          }
+        }
+        [1]=>
+        array(3) {
+          ["type"]=>
+          string(6) "folder"
+          ["name"]=>
+          string(5) "test2"
+          ["node"]=>
+          array(3) {
+            ["type"]=>
+            string(6) "folder"
+            ["name"]=>
+            string(5) "test1"
+            ["node"]=>
+            array(4) {
+              ["type"]=>
+              string(4) "file"
+              ["name"]=>
+              string(13) "testfile1.php"
+              ["template"]=>
+              string(4) "test"
+              ["value"]=>
+              string(0) ""
+            }
+          }
+        }
+      }
+    }
+  }
+}
+string(0) ""
+
+
+Time: 0 seconds, Memory: 4.00Mb
+
+OK (1 test, 1 assertion)

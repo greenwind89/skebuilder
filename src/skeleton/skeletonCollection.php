@@ -7,7 +7,9 @@
  */
 
 
-Class Skeleton {
+Class SkeletonCollection{
+
+
 	/**
 	 * this variale contains static folder stucture of phpfox
 	 * show have html file to make archive include them
@@ -64,13 +66,53 @@ Class Skeleton {
 	private $phpfox_substitution_1 = array(
 		'[sb:module_name]' => 'mmtest'
 		);
+
+	private $skeleton_name_and_full_path_list = array();
+	private $skeleton_folder = '';
+
+	private function _getSkeletonList() 
+	{
+		$dir = $this->skeleton_folder;
+
+		if(is_dir($dir)) 
+        {
+        	if($dh = opendir($dir)) 
+        	{
+            	while(($file = readdir($dh)) !== false) 
+            	{
+                	if($file != '.' && $file != '..') 
+                	{
+                    	if(is_dir($dir . $file)) 
+                    	{
+                        	$this->_getSkeletonList($dir . $file);
+						} 
+						else
+						{
+							$full_path = $dir . $file;
+							$path_parts = pathinfo($full_path);
+							$this->skeleton_name_and_full_path_list[$path_parts['filename']] = $full_path;
+                        }
+                	}
+				}
+        	}
+        	closedir($dh);
+        }
+	}
+
+
+	public function __construct($skeleton_folder) {
+		$this->skeleton_folder = $skeleton_folder;
+		$this->_getSkeletonList();
+	}
+
+
 	/**
 	 * @todo: handle file, predefined template files 
 	 * return the stucture of predefined packages
 	 * @param string $pakage_type name of package type: Phpfox,  SE, OxWall
 	 * @return array of structure
 	 */
-	public function getSkeleton ($package_type)
+	public function getSkeleton($package_type)
 	{
 		$package_type = strtolower($package_type);
 		switch ($package_type) {
@@ -84,6 +126,11 @@ Class Skeleton {
 		}
 	}
 
+	/**
+	 * @todo to be removed
+	 * @param  [type] $package_type [description]
+	 * @return [type]               [description]
+	 */
 	public function getSubstitution($package_type)
 	{
 		$package_type = strtolower($package_type);
@@ -97,9 +144,17 @@ Class Skeleton {
 				break;
 		}
 	}
-	
+
 	public function setPhpfoxSkeleton($structure)
 	{
 		$this->phpfox_skeleton = $structure;
+	}
+
+	/**
+	 * get skeleton list in skeleton folder 
+	 * @return array name of skeleton
+	 */
+	public function getSkeletonList() {
+		return array_keys($this->skeleton_name_and_full_path_list);
 	}
 }

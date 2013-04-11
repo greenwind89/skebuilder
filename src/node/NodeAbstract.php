@@ -16,4 +16,11 @@ Interface NodeAbstract {
 	 * @return true of create successfully
 	 */
 	public function create($container);
+
+	/**
+	 * hook method for a visitor, creat function also can be implement here
+	 * @param  visitor object $visitor visitor object to perform our operation 
+	 */
+	public function accept($visitor);
+
 }

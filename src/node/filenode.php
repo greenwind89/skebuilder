@@ -18,6 +18,7 @@ Class FileNode implements NodeAbstract{
 	 **/
 	private $name;
 
+	private $full_path;
 	/**
 	 * path to template file, relative with the src/template folder
 	 * ex: phpfox/phpfox_block_class.php
@@ -59,7 +60,10 @@ Class FileNode implements NodeAbstract{
 		$this->template_file = $template_file;
 	}
 
-
+	public function getFullPath() {
+		return $this->full_path;
+	}
+	
 	public function getName() {
 		return $this->name;
 	}
@@ -88,7 +92,14 @@ Class FileNode implements NodeAbstract{
 			}
 		}
 		fclose($fp);
+		$this->full_path = $new_file_path;
 		// chmod($new_file_path, 0777);
 		return true;
 	}
+
+	public function accept($visitor)
+	{
+		$visitor->visit($this);
+	}
+
 }

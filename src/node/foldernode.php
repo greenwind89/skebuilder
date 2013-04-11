@@ -25,6 +25,8 @@ Class FolderNode implements NodeAbstract{
 	 **/
 	private $name;
 
+
+	private $full_path;
 	/**
 	 * initialize object with name 
 	 * @param string $name name of this node
@@ -45,6 +47,10 @@ Class FolderNode implements NodeAbstract{
 		$this->children[$node->getName()] = $node;
 	}
 
+	public function getFullPath() {
+		return $this->full_path;
+	}
+
 	public function remove($node) {
 		unset($this->children[$node->getName()]);
 	}
@@ -59,7 +65,7 @@ Class FolderNode implements NodeAbstract{
 		{
 			return false;
 		}
-
+		$this->full_path = $new_folder_path;
 		foreach ($this->children as $child) {
 			if(!$child->create($new_folder_path))
 			{
@@ -67,6 +73,16 @@ Class FolderNode implements NodeAbstract{
 			}
 		}
 
+		
+
 		return true;
+	}
+
+	public function accept($visitor)
+	{
+		$visitor->visit($this);
+		foreach ($this->children as $child) {
+			$child->accept($visitor);
+		}
 	}
 }

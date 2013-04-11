@@ -6,8 +6,10 @@
  * @author  		minhTA	
  */
 require(dirname(__FILE__) . './archive.php');
-require(dirname(__FILE__) . './skeleton.php');
+require(dirname(__FILE__) . './skeleton/skeletonCollection.php');
 require(dirname(__FILE__) . './node/NodeAbstract.php');
+require(dirname(__FILE__) . './parser/parser.php');
+require(dirname(__FILE__) . './visitor/visitor.php');
 
 Class Skebuilder {
 

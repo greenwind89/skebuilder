@@ -124,6 +124,4 @@ class skebuilderTest extends PHPUnit_Framework_TestCase
         $root_node->create(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
     }
 
-
-    
 }
