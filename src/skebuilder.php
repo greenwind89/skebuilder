@@ -5,11 +5,19 @@
  * @copyright		[YOUNET_COPYRIGHT]
  * @author  		minhTA	
  */
+
+define('SKEBUILDER_BASE', realpath(dirname(__FILE__) . '/..') . DIRECTORY_SEPARATOR);
+
+define('SKEBUILDER_LIB_TEMPLATE', SKEBUILDER_BASE . 'lib' . DIRECTORY_SEPARATOR . 'template' . DIRECTORY_SEPARATOR);
+
+require(dirname(__FILE__) . './helpers.php');
 require(dirname(__FILE__) . './archive.php');
+require(dirname(__FILE__) . './context.php');
 require(dirname(__FILE__) . './skeleton/skeletonCollection.php');
 require(dirname(__FILE__) . './node/NodeAbstract.php');
 require(dirname(__FILE__) . './parser/parser.php');
 require(dirname(__FILE__) . './visitor/visitor.php');
+require(dirname(__FILE__) . './template/TemplateManager.php');
 
 Class Skebuilder {
 
@@ -19,6 +27,14 @@ Class Skebuilder {
 	 * @var Node 
 	 **/
 	private $node;
+
+	/**
+	 * template manager is in charge of controlling factoring and delivering template object
+	 *
+	 * @var Object
+	 **/
+	private $template_manager = null;
+
 
 	public function getNode()
 	{
@@ -36,6 +52,10 @@ Class Skebuilder {
 	 **/
 	static private $error_messages = array();
 
+	public function __construct()
+	{
+
+	}
 	/**
 	 * generate a predefined folder stucture in specificed location
 	 * @param  string $module_name name of the module to generate
@@ -315,4 +335,12 @@ Class Skebuilder {
 	{
 		return implode("\n", self::$error_messages);
 	}
+
+	public static function getTemplate($template_name)
+	{
+		$template_manager = TemplateManager::getInstance(SKEBUILDER_LIB_TEMPLATE);
+		return $template_manager->getTemplate($template_name);
+	}
+
+
 }

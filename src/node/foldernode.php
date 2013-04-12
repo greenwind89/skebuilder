@@ -59,19 +59,20 @@ Class FolderNode implements NodeAbstract{
 		return $this->children;
 	}
 
-	public function create($container = './') {
+	public function create($context) {
+		$container = $context->getFullPathOfCurrentContext();
 		$new_folder_path = rtrim($container, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $this->name; 
 		if(!mkdir($new_folder_path, 0777))
 		{
 			return false;
 		}
 		$this->full_path = $new_folder_path;
-		foreach ($this->children as $child) {
-			if(!$child->create($new_folder_path))
-			{
-				return false;
-			}
-		}
+		// foreach ($this->children as $child) {
+		// 	if(!$child->create($new_folder_path))
+		// 	{
+		// 		return false;
+		// 	}
+		// }
 
 		
 
@@ -84,5 +85,6 @@ Class FolderNode implements NodeAbstract{
 		foreach ($this->children as $child) {
 			$child->accept($visitor);
 		}
+		$visitor->leave($this);
 	}
 }

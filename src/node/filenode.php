@@ -25,26 +25,16 @@ Class FileNode implements NodeAbstract{
 	 * 
 	 * @var string
 	 **/
-	private $template_file = null;
+	private $template = null;
 
 	private function writeTemplateToNewCreatedFile($file_handler)
 	{
-		if(!file_exists($this->template_file))
-		{
-			Skebuilder::addErrorMessage('file ' . $this->template_file . ' does not exist');
-			return false;
-		}
 
-		if(!($template_file_string = file_get_contents($this->template_file)))
-		{
-			Skebuilder::addErrorMessage('file ' . $this->template_file . ' can not get content');
-			return false;
-		}
-
+		$template_file_string = $this->template->getContent();
 		// it is where the substitutions go a
 		if(!fwrite($file_handler, $template_file_string))
 		{
-			Skebuilder::addErrorMessage('file ' . $this->template_file . ' cannot be written');
+			Skebuilder::addErrorMessage('file at node name = ' . $this->name . ' cannot be written');
 			return false;
 		}
 
@@ -55,9 +45,13 @@ Class FileNode implements NodeAbstract{
 	 * initialize object with name 
 	 * @param string $name name of this node
 	 */
-	public function __construct($name, $template_file = null) {
+	public function __construct($name, $template_name = null) {
 		$this->name = $name;
-		$this->template_file = $template_file;
+		if($template_name)
+		{
+			$this->template = Skebuilder::getTemplate($template_name);
+		}
+		
 	}
 
 	public function getFullPath() {
@@ -72,19 +66,22 @@ Class FileNode implements NodeAbstract{
 		$this->name = $name;
 	}
 
-	public function create($container) {
+	public function create($context) {
 		if(trim($this->name) === '')
 		{
 			return false;
 		}
 
-		$new_file_path = rtrim($container, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $this->name; 
+		$container = $context->getFullPathOfCurrentContext();
+
+		$new_file_path = rtrim($container, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $this->name;
+
 		if(!$fp = fopen($new_file_path, 'w'))
 		{
 			return false;
 		}
 
-		if($this->template_file)
+		if($this->template)
 		{
 			if(!$this->writeTemplateToNewCreatedFile($fp))
 			{
@@ -100,6 +97,7 @@ Class FileNode implements NodeAbstract{
 	public function accept($visitor)
 	{
 		$visitor->visit($this);
+		$visitor->leave($this);
 	}
 
 }

@@ -6,21 +6,34 @@ class parserTest extends PHPUnit_Framework_TestCase
 {
 	protected function tearDown()
     {
-        Skebuilder::delete_directory(SKEBUILDER_UNITTEST_EXPERIMENT_DIR . 'upload');
+        // Skebuilder::delete_directory(SKEBUILDER_UNITTEST_EXPERIMENT_DIR . 'upload');
     }
+
+	// /**
+	//  * @covers XMLparser->parse
+	//  */
+	// public function testParseAFile()
+	// {
+	// 	$xml_parser = new parser();
+	// 	$data = $xml_parser->parseSkeleton(SKEBUILDER_UNITTEST_SKELETON_DIR . 'unittest_default.xml');
+	// 	$data->create(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+
+	// 	$print_visitor = new printVisitor;
+	// 	$data->accept($print_visitor);
+	// 	$this->assertTrue(count($data) > 0);
+	// }
+
 
 	/**
 	 * @covers XMLparser->parse
 	 */
-	public function testParseAFile()
+	public function testParseWithVisitorPattern()
 	{
 		$xml_parser = new parser();
 		$data = $xml_parser->parseSkeleton(SKEBUILDER_UNITTEST_SKELETON_DIR . 'unittest_default.xml');
-		$data->create(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
 
-		$print_visitor = new printVisitor;
-		$data->accept($print_visitor);
-		$this->assertTrue(count($data) > 0);
+		$build_visitor = new buildVisitor(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+		$data->accept($build_visitor);
 	}
 
 		

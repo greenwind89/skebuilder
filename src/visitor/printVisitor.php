@@ -15,4 +15,7 @@ class PrintVisitor implements visitor{
 	public function visit($node){
 		echo $node->getFullPath() . "\n";
 	}
+
+	public function leave($node){
+	}
 }

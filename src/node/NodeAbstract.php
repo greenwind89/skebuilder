@@ -11,11 +11,11 @@ require(dirname(__FILE__) . './foldernode.php');
 
 Interface NodeAbstract {
 	/**
-	 * create file or folder in current container
-	 * @param  string $container path or context of current container of this node
+	 * create file or folder in current context
+	 * @param  string $context context object storing current context
 	 * @return true of create successfully
 	 */
-	public function create($container);
+	public function create($context);
 
 	/**
 	 * hook method for a visitor, creat function also can be implement here
