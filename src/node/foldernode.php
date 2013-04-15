@@ -61,7 +61,11 @@ Class FolderNode implements NodeAbstract{
 
 	public function create($context) {
 		$container = $context->getFullPathOfCurrentContext();
-		$new_folder_path = rtrim($container, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $this->name; 
+		$replacement =  Skebuilder::getSkeletonReplacement();
+		$real_folder_name = $replacement->replace($this->name, $context);
+		$this->name = $real_folder_name;
+
+		$new_folder_path = rtrim($container, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $real_folder_name; 
 		if(!mkdir($new_folder_path, 0777))
 		{
 			return false;

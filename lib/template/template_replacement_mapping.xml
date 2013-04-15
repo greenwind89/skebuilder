@@ -1,0 +1,13 @@
+<mapping>
+	<data>
+		<default-replacement></default-replacement>
+	</data>
+	<templates>
+		<template name='phpfox_block_class'>
+			<replacement class='replacementPhpfox'/>
+		</template>
+		<template name='phpfox_block_html'>
+			<replacement class='replacementPhpfox'/>
+		</template>
+	</templates>
+</mapping>

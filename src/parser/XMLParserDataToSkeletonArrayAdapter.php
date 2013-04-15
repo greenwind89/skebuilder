@@ -12,9 +12,20 @@
  * we use a adapter pattern here to adapt the data
  */
 Class XMLParserDataToSkeletonArrayAdapter extends XMLParser implements parserInterface{
+	private $_replacement;
 	public function parseSkeleton($file_path)
 	{
 		$data = $this->parse($file_path);
+
+		if(isset($data['data']['replacement_class']))
+		{
+			Skebuilder::setSkeletonReplacement($data['data']['replacement_class']);
+		}
+		else
+		{
+			Skebuilder::setSkeletonReplacement('ReplacementDefault');
+		}
+		
 		//translate it into our expected structure
 		$root_node = new FolderNode('upload');
 		$this->buildCompositeNodeTreeFromParsedArray($data['structure'], $root_node);
@@ -53,4 +64,5 @@ Class XMLParserDataToSkeletonArrayAdapter extends XMLParser implements parserInt
 
 
 	}
+
 }

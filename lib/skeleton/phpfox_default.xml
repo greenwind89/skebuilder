@@ -1,21 +1,84 @@
 <skeleton>
 	<data>
 		<skeleton_id>phpfox_default</skeleton_id>
+		<replacement_class>ReplacementPhpfox</replacement_class>
 		<description>a skeleton for default Phpfox</description>
 	</data>
 
 	<structure>
-		<node type='folder' name='test1'>
-			<node type='folder' name='xml'>
-				<node type='file' name='testfile1.php'/>
-				<node type='file' name='testfile2.php'/>
-				<node type='file' name='testfilewithtemplate.php' template='test'/>
+		<node type='folder' name='upload'>
+			<node type='folder' name='include'>
+				<node type='folder' name='xml'>
+					<node type='file' name='[skebuilder:package_id].xml' template='phpfox_product_xml'/>
+				</node>
 			</node>
-		</node>
 
-		<node type='folder' name='test2'>
-			<node type='folder' name='test1'>
-				<node type='file' name='testfile1.php' template='test'/>
+			<node type='folder' name='module'>
+				<node type='folder' name='[skebuilder:module_name]'>
+					<node type='folder' name='include'>
+						<node type='folder' name='component'>
+
+							<node type='folder' name='ajax'>
+								<node type='file' name='index.html'/>
+							</node>
+
+							<node type='folder' name='block'>
+								<node type='file' name='index.html'/>
+							</node>
+
+							<node type='folder' name='controller'>
+								<node type='file' name='index.html'/>
+							</node>
+
+							<node type='file' name='index.html'/>
+
+						</node>
+						<node type='folder' name='plugin'>
+							<node type='file' name='index.html'/>
+						</node>
+						<node type='folder' name='service'>
+							<node type='file' name='index.html'/>
+						</node>
+
+						<node type='file' name='index.html'/>
+					</node>
+
+					<node type='folder' name='static'>
+						<node type='folder' name='image'>
+							<node type='file' name='index.html'/>
+						</node>
+
+						<node type='folder' name='css'>
+							<node type='folder' name='default'>
+								<node type='folder' name='default'>
+									<node type='file' name='index.html'/>
+								</node>
+								<node type='file' name='index.html'/>
+							</node>
+							<node type='file' name='index.html'/>
+						</node>
+
+						<node type='folder' name='jscript'>
+							<node type='file' name='index.html'/>
+						</node>
+					</node>
+					<node type='folder' name='template'>
+						<node type='folder' name='default'>
+							<node type='folder' name='block'>
+								<node type='file' name='index.html'/>
+							</node>
+
+							<node type='folder' name='controller'>
+								<node type='file' name='index.html'/>
+							</node>
+							<node type='file' name='index.html'/>
+						</node>
+					</node>
+					<node type='folder' name='yninstall'>
+						<node type='file' name='index.html'/>
+					</node>
+					<node type='file' name='phpfox.xml' template='phpfox_phrase_setting_xml'/>
+				</node>
 			</node>
 		</node>
 

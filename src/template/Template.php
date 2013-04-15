@@ -29,6 +29,8 @@ class Template{
 		$this->_template_path = $template_path;
 		$path_parts = pathinfo($template_path);
 		$this->_template_name = $path_parts['filename'];
+
+		$this->_replacement = Skebuilder::getReplacementOfTemplate($this->_template_name);
 	}
 
 	public function getName()
@@ -36,7 +38,7 @@ class Template{
 		return $this->_template_name;
 	}
 
-	public function getContent()
+	public function getContent($context)
 	{
 		if(!file_exists($this->_template_path))
 		{
@@ -50,6 +52,7 @@ class Template{
 			return false;
 		}
 
-		return $template_file_string;
+		$replaced_template = $this->_replacement->replace($template_file_string, $context);
+		return $replaced_template;
 	}
 }

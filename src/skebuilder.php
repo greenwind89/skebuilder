@@ -6,10 +6,14 @@
  * @author  		minhTA	
  */
 
-define('SKEBUILDER_BASE', realpath(dirname(__FILE__) . '/..') . DIRECTORY_SEPARATOR);
+// define('SKEBUILDER_BASE', realpath(dirname(__FILE__) . '/..') . DIRECTORY_SEPARATOR);
 
 define('SKEBUILDER_LIB_TEMPLATE', SKEBUILDER_BASE . 'lib' . DIRECTORY_SEPARATOR . 'template' . DIRECTORY_SEPARATOR);
 
+
+define('SKEBUILDER_REPLACEMENT_MAPPING_FILE', SKEBUILDER_LIB_TEMPLATE . 'template_replacement_mapping.xml' );
+
+define('SKEBUILDER_SRC_DIR', SKEBUILDER_BASE . 'src' . DIRECTORY_SEPARATOR);
 require(dirname(__FILE__) . './helpers.php');
 require(dirname(__FILE__) . './archive.php');
 require(dirname(__FILE__) . './context.php');
@@ -18,6 +22,7 @@ require(dirname(__FILE__) . './node/NodeAbstract.php');
 require(dirname(__FILE__) . './parser/parser.php');
 require(dirname(__FILE__) . './visitor/visitor.php');
 require(dirname(__FILE__) . './template/TemplateManager.php');
+require(dirname(__FILE__) . './replacement/ReplacementManager.php');
 
 Class Skebuilder {
 
@@ -342,5 +347,45 @@ Class Skebuilder {
 		return $template_manager->getTemplate($template_name);
 	}
 
+	public static function getReplacementOfTemplate($template_name)
+	{
+		$replacement_manager = ReplacementManager::getInstance(SKEBUILDER_REPLACEMENT_MAPPING_FILE);
+		return $replacement_manager->getReplacementOfTemplate($template_name);
+	}
 
+	public static function getReplacementByClass($class_name) {
+		$replacement_manager = ReplacementManager::getInstance(SKEBUILDER_REPLACEMENT_MAPPING_FILE);
+		return $replacement_manager->getReplacementClass($class_name);
+	}
+
+	private static $_module_name = 'default';
+
+	public static function setModuleName($module_name) {
+		self::$_module_name = $module_name;
+	}
+
+	public static function getModuleName() {
+		return self::$_module_name;
+	}
+
+	private static $_package_id = 'default_package';
+
+	public static function setPackageId($package_id) {
+		self::$_package_id = $package_id;
+	}
+
+	public static function getPackageId() {
+		return self::$_package_id;
+	}
+
+	private static $_skeleton_replacement;
+
+	public static function setSkeletonReplacement($class_name) {
+		$replacement_manager = ReplacementManager::getInstance(SKEBUILDER_REPLACEMENT_MAPPING_FILE);
+		self::$_skeleton_replacement = $replacement_manager->getReplacementClass($class_name);
+	}
+
+	public static function getSkeletonReplacement() {
+		return self::$_skeleton_replacement ;
+	}
 }

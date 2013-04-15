@@ -22,6 +22,8 @@ Class Context {
 	 **/
 	private $_module_name;
 
+	private $_package_id;
+
 	/**
 	 * most basic item name of current generated module
 	 *
@@ -40,7 +42,17 @@ Class Context {
 	public function __construct($container)
 	{
 		// @todo: ... add module and item name here
+		$this->_module_name = Skebuilder::getModuleName();
+		$this->_package_id = Skebuilder::getPackageId();
 		$this->_container = $container;
+	}
+
+	public function getModuleName() {
+		return $this->_module_name;
+	}
+
+	public function getPackageId() {
+		return $this->_package_id;
 	}
 
 	public function getContainer(){
@@ -62,7 +74,7 @@ Class Context {
 		$relative_to_containter_path = implode(DIRECTORY_SEPARATOR, $names_array); 
 		$full_path = rtrim($this->_container, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $relative_to_containter_path . DIRECTORY_SEPARATOR; 
 
-		var_dump($full_path);
+		// var_dump($full_path);
 		return $full_path;
 	}
 

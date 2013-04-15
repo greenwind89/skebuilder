@@ -27,10 +27,10 @@ Class FileNode implements NodeAbstract{
 	 **/
 	private $template = null;
 
-	private function writeTemplateToNewCreatedFile($file_handler)
+	private function writeTemplateToNewCreatedFile($file_handler, $context)
 	{
 
-		$template_file_string = $this->template->getContent();
+		$template_file_string = $this->template->getContent($context);
 		// it is where the substitutions go a
 		if(!fwrite($file_handler, $template_file_string))
 		{
@@ -74,7 +74,10 @@ Class FileNode implements NodeAbstract{
 
 		$container = $context->getFullPathOfCurrentContext();
 
-		$new_file_path = rtrim($container, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $this->name;
+		$real_file_name = Skebuilder::getSkeletonReplacement()->replace($this->name, $context);
+		$this->name = $real_file_name;
+		
+		$new_file_path = rtrim($container, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $real_file_name;
 
 		if(!$fp = fopen($new_file_path, 'w'))
 		{
@@ -83,7 +86,7 @@ Class FileNode implements NodeAbstract{
 
 		if($this->template)
 		{
-			if(!$this->writeTemplateToNewCreatedFile($fp))
+			if(!$this->writeTemplateToNewCreatedFile($fp, $context))
 			{
 				return false;
 			}

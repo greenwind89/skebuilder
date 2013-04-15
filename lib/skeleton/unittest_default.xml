@@ -1,6 +1,7 @@
 <skeleton>
 	<data>
 		<skeleton_id>phpfox_default</skeleton_id>
+		<replacement_class>ReplacementPhpfox</replacement_class>
 		<description></description>
 	</data>
 
@@ -14,7 +15,7 @@
 				</node>
 			</node>
 
-			<node type='folder' name='test2'>
+			<node type='folder' name='[skebuilder:module_name]'>
 				<node type='folder' name='test1'>
 					<node type='file' name='testfile1.php' template='phpfox_block_class'/>
 				</node>

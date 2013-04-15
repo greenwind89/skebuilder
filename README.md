@@ -34,3 +34,6 @@ this will get default replacement
 
 If no substitution is found, default substitution will be invoked 
 
+Add a template in to Skebuilder 
+
+ + Create a template file int /lib/template, copy all file you want to make it template into new created file

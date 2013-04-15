@@ -12,7 +12,7 @@ defined('PHPFOX') or exit('NO DICE!');
  * @author  		[skesubs:author]
  * @package  		Module_[skesubs:module]
  */
-class [skesubs:module]_Component_Block_Categories extends Phpfox_Component 
+class [skebuilder:module]_Component_Block_Categories extends Phpfox_Component 
 {
 	
 }
