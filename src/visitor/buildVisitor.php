@@ -23,6 +23,7 @@ class BuildVisitor implements visitor{
 	public function visit($node){
 		
 		// $this->_context->printCurrentStack();
+		$this->_context->setCurrentProcessingNode($node);
 		$node->create($this->_context);
 		$this->_context->push($node);
 		// >> $node->create();

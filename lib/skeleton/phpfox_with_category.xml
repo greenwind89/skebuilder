@@ -2,7 +2,7 @@
 	<data>
 		<skeleton_id>phpfox_default</skeleton_id>
 		<replacement_class>ReplacementPhpfox</replacement_class>
-		<description>a skeleton for default Phpfox</description>
+		<description>a skeleton for Phpfox module with category</description>
 	</data>
 
 	<structure>
@@ -27,6 +27,14 @@
 							</node>
 
 							<node type='folder' name='controller'>
+								<node type='folder' name='admincp'>
+									<node type='folder' name='category'>
+										<node type='file' name='index.class.php' template='phpfox_admincp_category_class_index'/>
+										<node type='file' name='add.class.php' template='phpfox_admincp_category_class_add'/>
+										<node type='file' name='index.html'/>
+									</node>
+									<node type='file' name='index.html'/>
+								</node>
 								<node type='file' name='index.html'/>
 								<node type='file' name='index.class.php' template='phpfox_controller_default_class'/>
 							</node>
@@ -38,6 +46,11 @@
 							<node type='file' name='index.html'/>
 						</node>
 						<node type='folder' name='service'>
+							<node type='folder' name='category'>
+								<node type='file' name='category.class.php' template='phpfox_service_category_category'/>
+								<node type='file' name='process.class.php' template='phpfox_service_category_process'/>
+								<node type='file' name='index.html'/>
+							</node>
 							<node type='file' name='index.html'/>
 						</node>
 
@@ -60,6 +73,8 @@
 						</node>
 
 						<node type='folder' name='jscript'>
+							<node type='file' name='admin.js' template='phpfox_javascript_admin_category'/>
+
 							<node type='file' name='index.html'/>
 						</node>
 					</node>
@@ -70,15 +85,27 @@
 							</node>
 
 							<node type='folder' name='controller'>
+								<node type='folder' name='admincp'>
+									<node type='folder' name='category'>
+										<node type='file' name='index.html.php' template='phpfox_admincp_category_html_index'/>
+										<node type='file' name='add.html.php' template='phpfox_admincp_category_html_add'/>
+										<node type='file' name='index.html'/>
+									</node>
+									<node type='file' name='index.html'/>
+								</node>
 								<node type='file' name='index.html'/>
 							</node>
 							<node type='file' name='index.html'/>
 						</node>
 					</node>
 					<node type='folder' name='yninstall'>
+						<node type='folder' name='versions'>
+							<node type='file' name='v3.01.php' template='phpfox_yninstall_with_category'/>
+							<node type='file' name='index.html'/>
+						</node>
 						<node type='file' name='index.html'/>
 					</node>
-					<node type='file' name='phpfox.xml' template='phpfox_phrase_setting_xml'/>
+					<node type='file' name='phpfox.xml' template='phpfox_phrase_setting_custom_category_xml'/>
 				</node>
 			</node>
 		</node>

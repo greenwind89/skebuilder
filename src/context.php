@@ -127,12 +127,17 @@ Class Context {
 	}
 
 	public function getNameOfCurrentNode() {
-		if(count($this->_node_stack) == 0)
+		if(!$this->_current_processing_node)
 		{
 			return false;
 		}
+		return $this->_current_processing_node->getName();
+	}
 
-		$current = $this->_node_stack[0];
-		return $current->getName();
+	private $_current_processing_node;
+
+	public function setCurrentProcessingNode($node) {
+		$this->_current_processing_node = $node;
+
 	}
 }

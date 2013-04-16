@@ -31,4 +31,17 @@ class contextTest extends PHPUnit_Framework_TestCase
          $this->assertEquals($expect, $actual);
     }
 
+     public function testGetNameOfCurrentNode(){
+         $context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+         $mm_node = new FolderNode('mm');
+         $context->push($mm_node);
+
+         $test1_node = new FileNode('test1.txt');
+         $context->push($test1_node);
+
+         $actual = $context->getNameOfCurrentNode();
+         $expect = 'test1.txt';
+         $this->assertEquals($expect, $actual);
+    }
+
 }

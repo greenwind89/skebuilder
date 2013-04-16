@@ -19,5 +19,13 @@ class helpersTest extends PHPUnit_Framework_TestCase
 		$expected = 'phpfox';
 		$this->assertEquals($actual, $expected);
 	}
+
+	public function testStripFileExtension2()
+	{
+		$helpers = new Helpers;
+		$actual = $helpers->stripFileExtension('phpfox.class.php');
+		$expected = 'phpfox';
+		$this->assertEquals($actual, $expected);
+	}
 }
 	

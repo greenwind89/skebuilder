@@ -37,3 +37,16 @@ If no substitution is found, default substitution will be invoked
 Add a template in to Skebuilder 
 
  + Create a template file int /lib/template, copy all file you want to make it template into new created file
+
+ + Replace string with appropriate substitution or create a new one and  follow add a replacement steps as below
+
+
+Add a replacement. After creating a new template, you need to add some replacement into for exmaple: ReplacementPhpfox
+
+	+ Define the vocabulary to substitute in ReplacementPhpfox, to make it integerity, all vocabulary in $matching_array are valid subtitution, so you need to add your new one into this. Don't worry about [skebuilder:], system will add it automatically into vacabulary  
+
+	+ Add substituation vocab and coressponding value by for ex: $this->addKeyValueIntoReplacementList('module_name', $this->context->getModuleName());. Hint: using context object to retrieve value for replacement
+
+	+ You should also add a unittest as in ReplacementPhpfoxTest for new added replacement
+	
+ HOw to test easily the template

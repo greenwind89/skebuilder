@@ -51,6 +51,10 @@ Class Helpers {
 
 	public function stripFileExtension($filename)
 	{
-		return preg_replace("/\\.[^.\\s]{3,4}$/", "", $filename);
+		$new_file_name =  preg_replace("/\\.[^.\\s]{3,5}$/", "", $filename);
+
+		// duple checking for the case: phpfox.class.php
+		return preg_replace("/\\.[^.\\s]{3,5}$/", "", $new_file_name);
+
 	}
 }

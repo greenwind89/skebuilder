@@ -116,5 +116,71 @@ class ReplacementPhpfoxTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Jobposting_Component_Block_Admincp_Category_Add', $replacement_list['[skebuilder:block_class_name]']);
     }
 
+    public function testReplacementControllerClassName3()
+    {
+        $replacement = new ReplacementPhpfox();
+        $content = '';
+        $context_stub = $this->getMock('Context', array(), array(''));
+        $context_stub->expects($this->any())
+             ->method('getListOfDirectoriesFromDirectory')
+             ->will($this->returnValue(array('admincp', 'category')));
+
+        $context_stub->expects($this->any())
+             ->method('getNameOfCurrentNode')
+             ->will($this->returnValue('add.php'));
+
+        $context_stub->expects($this->any())
+             ->method('getModuleName')
+             ->will($this->returnValue('jobposting'));
+
+        $replacement->replace($content, $context_stub);
+         $replacement_list = $replacement->getReplacementList();
+        $this->assertEquals('Jobposting_Component_Controller_Admincp_Category_Add', $replacement_list['[skebuilder:controller_class_name]']);
+    }
+
+    public function testReplacementControllerClassName4()
+    {
+        $replacement = new ReplacementPhpfox();
+        $content = '';
+        $context_stub = $this->getMock('Context', array(), array(''));
+        $context_stub->expects($this->any())
+             ->method('getListOfDirectoriesFromDirectory')
+             ->will($this->returnValue(array('admincp', 'category')));
+
+        $context_stub->expects($this->any())
+             ->method('getNameOfCurrentNode')
+             ->will($this->returnValue('job.class.php'));
+
+        $context_stub->expects($this->any())
+             ->method('getModuleName')
+             ->will($this->returnValue('jobposting'));
+
+        $replacement->replace($content, $context_stub);
+         $replacement_list = $replacement->getReplacementList();
+        $this->assertEquals('Jobposting_Service_Admincp_Category_Job', $replacement_list['[skebuilder:service_class_name]']);
+    }
+
+    public function testReplacementControllerClassName5()
+    {
+        $replacement = new ReplacementPhpfox();
+        $content = '';
+        $context_stub = $this->getMock('Context', array(), array(''));
+        $context_stub->expects($this->any())
+             ->method('getListOfDirectoriesFromDirectory')
+             ->will($this->returnValue(array('admincp', 'category')));
+
+        $context_stub->expects($this->any())
+             ->method('getNameOfCurrentNode')
+             ->will($this->returnValue('job.class.php'));
+
+        $context_stub->expects($this->any())
+             ->method('getModuleName')
+             ->will($this->returnValue('jobposting'));
+
+        $replacement->replace($content, $context_stub);
+         $replacement_list = $replacement->getReplacementList();
+        $this->assertEquals('admincp.category.job', $replacement_list['[skebuilder:link_to_controller]']);
+    }
+
         
 }
