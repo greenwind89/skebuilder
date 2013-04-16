@@ -24,32 +24,32 @@ class parserTest extends PHPUnit_Framework_TestCase
 	// }
 
 
-	// /**
-	//  * @covers XMLparser->parse
-	//  */
-	// public function testParseWithVisitorPattern()
-	// {
-	// 	Skebuilder::setModuleName('jobposting');
-	// 	$xml_parser = new parser();
-
-	// 	$data = $xml_parser->parseSkeleton(SKEBUILDER_UNITTEST_SKELETON_DIR . 'unittest_default.xml');
-	// 	$build_visitor = new buildVisitor(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
-	// 	$data->accept($build_visitor);
-	// 	// var_dump(Skebuilder::getErrorMessages());
-	// }
-
-
-	public function testParseWithVisitorPattern2()
+	/**
+	 * @covers XMLparser->parse
+	 */
+	public function testParseWithVisitorPattern()
 	{
 		Skebuilder::setModuleName('jobposting');
-		Skebuilder::setPackageId('younet_jobposting');
 		$xml_parser = new parser();
 
-		$data = $xml_parser->parseSkeleton(SKEBUILDER_UNITTEST_SKELETON_DIR . 'phpfox_default.xml');
+		$data = $xml_parser->parseSkeleton(SKEBUILDER_UNITTEST_SKELETON_DIR . 'unittest_default.xml');
 		$build_visitor = new buildVisitor(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
 		$data->accept($build_visitor);
 		// var_dump(Skebuilder::getErrorMessages());
 	}
+
+
+	// public function testParseWithVisitorPattern2()
+	// {
+	// 	Skebuilder::setModuleName('jobposting');
+	// 	Skebuilder::setPackageId('younet_jobposting');
+	// 	$xml_parser = new parser();
+
+	// 	$data = $xml_parser->parseSkeleton(SKEBUILDER_UNITTEST_SKELETON_DIR . 'phpfox_default.xml');
+	// 	$build_visitor = new buildVisitor(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+	// 	$data->accept($build_visitor);
+	// 	// var_dump(Skebuilder::getErrorMessages());
+	// }
 
 		
 }

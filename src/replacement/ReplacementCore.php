@@ -15,7 +15,14 @@ class ReplacementCore{
 	 */
 	private $replacement_list = array();
 
-	protected $context; 
+	
+	protected $context;
+
+	private $_helpers; 
+	public function __construct() {
+		$this->_helpers = new Helpers();
+	}
+
 	public function replace($content, $context) {
 		$this->context = $context;
 

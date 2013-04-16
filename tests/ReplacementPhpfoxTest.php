@@ -59,5 +59,62 @@ class ReplacementPhpfoxTest extends PHPUnit_Framework_TestCase
         // var_dump(Skebuilder::getErrorMessages());
     }
 
+    public function testReplacementPhpfoxModuleNameFirstUppercase()
+    {
+        Skebuilder::setModuleName('jobposting');
+        $content = '';
+        $replacement = new ReplacementPhpfox();
+        $context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+        $replacement->replace($content, $context);
+
+        $replacement_list = $replacement->getReplacementList();
+        $this->assertEquals('Jobposting', $replacement_list['[skebuilder:module_name_upper_first]']);
+        // var_dump(Skebuilder::getErrorMessages());
+    }
+
+    public function testReplacementBlockClassName2()
+    {
+        $replacement = new ReplacementPhpfox();
+        $content = '';
+        $context_stub = $this->getMock('Context', array(), array(''));
+        $context_stub->expects($this->any())
+             ->method('getListOfDirectoriesFromDirectory')
+             ->will($this->returnValue(array('admincp')));
+
+        $context_stub->expects($this->any())
+             ->method('getNameOfCurrentNode')
+             ->will($this->returnValue('index.php'));
+
+        $context_stub->expects($this->any())
+             ->method('getModuleName')
+             ->will($this->returnValue('jobposting'));
+
+        $replacement->replace($content, $context_stub);
+         $replacement_list = $replacement->getReplacementList();
+        $this->assertEquals('Jobposting_Component_Block_Admincp_Index', $replacement_list['[skebuilder:block_class_name]']);
+    }
+
+    public function testReplacementBlockClassName3()
+    {
+        $replacement = new ReplacementPhpfox();
+        $content = '';
+        $context_stub = $this->getMock('Context', array(), array(''));
+        $context_stub->expects($this->any())
+             ->method('getListOfDirectoriesFromDirectory')
+             ->will($this->returnValue(array('admincp', 'category')));
+
+        $context_stub->expects($this->any())
+             ->method('getNameOfCurrentNode')
+             ->will($this->returnValue('add.php'));
+
+        $context_stub->expects($this->any())
+             ->method('getModuleName')
+             ->will($this->returnValue('jobposting'));
+
+        $replacement->replace($content, $context_stub);
+         $replacement_list = $replacement->getReplacementList();
+        $this->assertEquals('Jobposting_Component_Block_Admincp_Category_Add', $replacement_list['[skebuilder:block_class_name]']);
+    }
+
         
 }

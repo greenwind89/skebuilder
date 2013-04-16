@@ -8,8 +8,16 @@ class helpersTest extends PHPUnit_Framework_TestCase
 	{
 		$helpers = new Helpers;
 		$list = $helpers->getFileList(SKEBUILDER_UNITTEST_RESOURCE_DIR);
-		$this->assertContains('mmtest1.txt', $list[0]);
-		$this->assertContains('mmtest2.txt', $list[1]);
+		$this->assertContains('test1.txt', $list[0]);
+		$this->assertContains('test2.txt', $list[1]);
+	}
+
+	public function testStripFileExtension()
+	{
+		$helpers = new Helpers;
+		$actual = $helpers->stripFileExtension('phpfox.php');
+		$expected = 'phpfox';
+		$this->assertEquals($actual, $expected);
 	}
 }
 	

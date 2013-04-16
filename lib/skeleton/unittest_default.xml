@@ -17,7 +17,7 @@
 
 			<node type='folder' name='[skebuilder:module_name]'>
 				<node type='folder' name='test1'>
-					<node type='file' name='testfile1.php' template='phpfox_block_class'/>
+					<node type='file' name='testfile1.php' template='phpfox_block_default_class'/>
 				</node>
 			</node>
 		</node>

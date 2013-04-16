@@ -48,7 +48,7 @@ Class Context {
 	}
 
 	public function getModuleName() {
-		return $this->_module_name;
+		return strtolower($this->_module_name);
 	}
 
 	public function getPackageId() {
@@ -95,5 +95,44 @@ Class Context {
 		}
 
 		echo "\n";
+	}
+	/**
+	 * get list of directory succeeds input directory pattern
+	 * <pre>
+	 * 		For Phpfox: Fullpath context (upload/module/xxx/component/block/admnincp/index.php)
+	 * 		getListOfDirectoriesFromDirectory('component/block') --> array('admincp')
+	 * </pre>
+	 * @param  string $directory_pattern patern to recognize right root directory
+	 * @return string                  array of directory
+	 */
+	public function getListOfDirectoriesFromDirectory($directory_pattern) {
+		$full_path = $this->getFullPathOfCurrentContext();
+		$path_with_pattern = strstr($full_path, $directory_pattern);
+		$remain_path = str_replace($directory_pattern, '', $path_with_pattern);
+
+		$parts = explode(DIRECTORY_SEPARATOR, $remain_path);
+
+		$result = array();
+		foreach ($parts as $part) {
+			if($part == '' || strstr($part, '.'))
+			{
+				continue;
+			}
+			else
+			{
+				$result[] = $part;
+			}
+		}
+		return $result;
+	}
+
+	public function getNameOfCurrentNode() {
+		if(count($this->_node_stack) == 0)
+		{
+			return false;
+		}
+
+		$current = $this->_node_stack[0];
+		return $current->getName();
 	}
 }

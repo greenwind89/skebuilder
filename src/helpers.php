@@ -48,4 +48,9 @@ Class Helpers {
 
         return $this->file_path_list;
 	}
+
+	public function stripFileExtension($filename)
+	{
+		return preg_replace("/\\.[^.\\s]{3,4}$/", "", $filename);
+	}
 }

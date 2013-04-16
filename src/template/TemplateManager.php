@@ -17,7 +17,7 @@ class TemplateManager{
 	private $template_list;
 
 
-	private $template_accepted_extensions = array('php', 'html');
+	private $template_accepted_extensions = array('php', 'html', 'xml');
 
 	/**
 	 * lazy initializing singleton
