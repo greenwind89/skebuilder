@@ -5,6 +5,6 @@
 class skebuilderTest extends PHPUnit_Framework_TestCase
 {
     public function test2(){
-        $this->assertEquals(1,1);
+       
     }
 }

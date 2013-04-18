@@ -29,7 +29,8 @@ class ReplacementPhpfox extends ReplacementCore{
 		'service_class_name',
 		'link_to_controller',
 		'item_name',
-		'item_name_upper_first'
+		'item_name_upper_first',
+		'author'
 		);
 
 
@@ -47,16 +48,18 @@ class ReplacementPhpfox extends ReplacementCore{
 
 	public function buildReplacementList() {
 		$this->addKeyValueIntoReplacementList('module_name', $this->context->getModuleName());
-		$this->addKeyValueIntoReplacementList('item_name', $this->context->getModuleName());
+		$this->addKeyValueIntoReplacementList('item_name', $this->context->getItemName());
 		$this->addKeyValueIntoReplacementList('package_id', $this->context->getPackageId());
 		$this->addKeyValueIntoReplacementList('module_name_upper_first', ucfirst($this->context->getModuleName()));
-		$this->addKeyValueIntoReplacementList('item_name_upper_first', ucfirst($this->context->getModuleName()));
+		$this->addKeyValueIntoReplacementList('item_name_upper_first', ucfirst($this->context->getItemName()));
 
 		$this->addKeyValueIntoReplacementList('block_class_name', $this->getClassName($this->_block_pattern_array));
 		$this->addKeyValueIntoReplacementList('controller_class_name', $this->getClassName($this->_controller_pattern_array));
 		$this->addKeyValueIntoReplacementList('service_class_name', $this->getClassName($this->_service_pattern_array));
 
 		$this->addKeyValueIntoReplacementList('link_to_controller', $this->getLinkToController($this->_controller_pattern_array));
+
+		$this->addKeyValueIntoReplacementList('author', $this->context->getAuthorName());
 
 	}
 

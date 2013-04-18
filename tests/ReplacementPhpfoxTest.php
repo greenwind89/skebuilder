@@ -34,10 +34,10 @@ class ReplacementPhpfoxTest extends PHPUnit_Framework_TestCase
      */
     public function testReplacementPhpfoxModuleName()
     {
-        Skebuilder::setModuleName('jobposting');
         $content = '';
         $replacement = new ReplacementPhpfox();
         $context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+        $context->setModuleName('jobposting');
         $replacement->replace($content, $context);
 
         $replacement_list = $replacement->getReplacementList();
@@ -48,10 +48,10 @@ class ReplacementPhpfoxTest extends PHPUnit_Framework_TestCase
 
     public function testReplacementPhpfoxPackageId()
     {
-        Skebuilder::setPackageId('younet_jobposting');
         $content = '';
         $replacement = new ReplacementPhpfox();
         $context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+        $context->setPackageId('younet_jobposting');
         $replacement->replace($content, $context);
 
         $replacement_list = $replacement->getReplacementList();
@@ -61,10 +61,10 @@ class ReplacementPhpfoxTest extends PHPUnit_Framework_TestCase
 
     public function testReplacementPhpfoxModuleNameFirstUppercase()
     {
-        Skebuilder::setModuleName('jobposting');
         $content = '';
         $replacement = new ReplacementPhpfox();
         $context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+         $context->setModuleName('jobposting');
         $replacement->replace($content, $context);
 
         $replacement_list = $replacement->getReplacementList();
@@ -180,6 +180,18 @@ class ReplacementPhpfoxTest extends PHPUnit_Framework_TestCase
         $replacement->replace($content, $context_stub);
          $replacement_list = $replacement->getReplacementList();
         $this->assertEquals('admincp.category.job', $replacement_list['[skebuilder:link_to_controller]']);
+    }
+
+    public function testReplacementControllerClassName6()
+    {
+        $content = '';
+        $replacement = new ReplacementPhpfox();
+        $context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+        $context->setAuthorName('MinhTA');
+        $replacement->replace($content, $context);
+
+        $replacement_list = $replacement->getReplacementList();
+        $this->assertEquals('MinhTA', $replacement_list['[skebuilder:author]']);
     }
 
         

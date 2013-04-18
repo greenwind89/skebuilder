@@ -1,3 +1,3 @@
-<a href='phpfox.php'> Phpfox </a> <br>
-<a href='oxwall.php'> Oxwall </a> <br>
-<a href='se.php'> SE </a> <br>
+<a href='index.php?package=phpfox'> Phpfox </a> <br>
+<a href='index.php?package=oxwall'> Oxwall </a> <br>
+<a href='index.php?package=se'> SE </a> <br>

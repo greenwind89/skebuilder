@@ -15,6 +15,25 @@ Class Context {
 	 **/
 	private $_node_stack = array();
 
+	
+
+	
+
+	
+
+	/**
+	 * container of current context
+	 * usually, it is a full path to a folder
+	 *
+	 * @var string
+	 **/
+	private $_container;
+
+	public function __construct($container)
+	{
+		$this->_container = $container;
+	}
+
 	/**
 	 * name of current generated module
 	 *
@@ -22,7 +41,13 @@ Class Context {
 	 **/
 	private $_module_name;
 
-	private $_package_id;
+	public function getModuleName() {
+		return strtolower($this->_module_name);
+	}
+
+	public function setModuleName($name) {
+		$this->_module_name = $name;
+	}
 
 	/**
 	 * most basic item name of current generated module
@@ -31,32 +56,42 @@ Class Context {
 	 **/
 	private $_item_name;
 
-	/**
-	 * container of current context
-	 * usually, it is a full path to a folder
-	 *
-	 * @var string
-	 **/
-	private $container;
-
-	public function __construct($container)
-	{
-		// @todo: ... add module and item name here
-		$this->_module_name = Skebuilder::getModuleName();
-		$this->_package_id = Skebuilder::getPackageId();
-		$this->_container = $container;
+	public function getItemName() {
+		return strtolower($this->_item_name);
 	}
 
-	public function getModuleName() {
-		return strtolower($this->_module_name);
+	public function setItemName($name) {
+		$this->_item_name = $name;
 	}
+
+
+
+	private $_author_name;
+
+	public function getAuthorName() {
+		return $this->_author_name;
+	}
+
+	public function setAuthorName($author_name) {
+		$this->_author_name = $author_name;
+	}
+
+
+
+	private $_package_id;
 
 	public function getPackageId() {
 		return $this->_package_id;
 	}
 
-	public function getContainer(){
+	public function setPackageId($package_id) {
+		$this->_package_id = $package_id;
+	}
 
+
+
+	public function getContainer(){
+		return $this->_container;
 	}
 	public function push($node)
 	{
