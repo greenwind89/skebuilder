@@ -15,14 +15,13 @@ class BuildVisitor implements visitor{
 	 **/
 	private $_context;
 
-	public function __construct($containter)
+	public function __construct($context)
 	{
-		$this->_context = new Context($containter);
+		$this->_context = $context;
 	}
 
 	public function visit($node){
-		
-		// $this->_context->printCurrentStack();
+	
 		$this->_context->setCurrentProcessingNode($node);
 		$node->create($this->_context);
 		$this->_context->push($node);

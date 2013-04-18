@@ -72,31 +72,14 @@ Class SkeletonCollection{
 
 	private function _getSkeletonList() 
 	{
-		$dir = $this->skeleton_folder;
 
-		if(is_dir($dir)) 
-        {
-        	if($dh = opendir($dir)) 
-        	{
-            	while(($file = readdir($dh)) !== false) 
-            	{
-                	if($file != '.' && $file != '..') 
-                	{
-                    	if(is_dir($dir . $file)) 
-                    	{
-                        	$this->_getSkeletonList($dir . $file);
-						} 
-						else
-						{
-							$full_path = $dir . $file;
-							$path_parts = pathinfo($full_path);
-							$this->skeleton_name_and_full_path_list[$path_parts['filename']] = $full_path;
-                        }
-                	}
-				}
-        	}
-        	closedir($dh);
-        }
+		$helpers = new Helpers();
+		$list_full_path = $helpers->getFileList($this->skeleton_folder, array('xml'));
+
+		foreach ($list_full_path as  $full_path) {
+			$path_parts = pathinfo($full_path);
+			$this->skeleton_name_and_full_path_list[$path_parts['filename']] = $full_path;
+		}
 	}
 
 
@@ -115,15 +98,7 @@ Class SkeletonCollection{
 	public function getSkeleton($package_type)
 	{
 		$package_type = strtolower($package_type);
-		switch ($package_type) {
-			case 'phpfox':
-					return $this->phpfox_skeleton;
-				break;
-			
-			default:
-					return false;
-				break;
-		}
+		return $this->skeleton_name_and_full_path_list[$package_type];	
 	}
 
 	/**

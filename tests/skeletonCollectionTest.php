@@ -24,7 +24,7 @@ class skeletonCollectionTest extends PHPUnit_Framework_TestCase
 	{
 		$skeletons = new SkeletonCollection(SKEBUILDER_UNITTEST_SKELETON_DIR);
 		$phpfox_default_skeleton = $skeletons->getSkeleton('phpfox_default');
-		$this->assertTrue($phpfox_default_skeleton);
+		$this->assertNotNull($phpfox_default_skeleton);
 	}
 	
 	

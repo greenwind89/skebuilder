@@ -129,7 +129,16 @@ Class Context {
 	public function getNameOfCurrentNode() {
 		if(!$this->_current_processing_node)
 		{
-			return false;
+			$current = end($this->_node_stack);
+			if(!$current)
+			{
+				return false;
+			}
+			else
+			{
+				return $current->getName();
+			}
+			
 		}
 		return $this->_current_processing_node->getName();
 	}

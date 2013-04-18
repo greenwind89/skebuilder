@@ -1,8 +1,4 @@
 <?php
-define('SKEBUILDER_DS', DIRECTORY_SEPARATOR);
-
-define('SKEBUILDER_BASE', dirname(__FILE__) . SKEBUILDER_DS);
-
 define('SKEBUILDER_START_TIME', array_sum(explode(' ', microtime())));
 
 
@@ -10,4 +6,4 @@ define('SKEBUILDER_FILES_DIR', SKEBUILDER_BASE . 'files' . SKEBUILDER_DS);
 
 define('SKEBUILDER_CACHE_DIR', SKEBUILDER_FILES_DIR . 'cache' .  SKEBUILDER_DS);
 
-define('SKEBUILDER_FILE_TEMPLATE_DIR', SKEBUILDER_BASE . 'src' .  SKEBUILDER_DS . 'template' . SKEBUILDER_DS);
+define('SKEBUILDER_FILE_TEMPLATE_DIR', SKEBUILDER_BASE . 'lib' .  SKEBUILDER_DS . 'template' . SKEBUILDER_DS);

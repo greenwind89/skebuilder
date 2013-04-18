@@ -14,6 +14,7 @@ define('SKEBUILDER_LIB_TEMPLATE', SKEBUILDER_BASE . 'lib' . DIRECTORY_SEPARATOR 
 define('SKEBUILDER_REPLACEMENT_MAPPING_FILE', SKEBUILDER_LIB_TEMPLATE . 'template_replacement_mapping.xml' );
 
 define('SKEBUILDER_SRC_DIR', SKEBUILDER_BASE . 'src' . DIRECTORY_SEPARATOR);
+
 require(dirname(__FILE__) . './helpers.php');
 require(dirname(__FILE__) . './archive.php');
 require(dirname(__FILE__) . './context.php');
@@ -378,14 +379,15 @@ Class Skebuilder {
 		return self::$_package_id;
 	}
 
-	private static $_skeleton_replacement;
+	private static $_skeleton_replacement = NULL;
 
 	public static function setSkeletonReplacement($class_name) {
-		$replacement_manager = ReplacementManager::getInstance(SKEBUILDER_REPLACEMENT_MAPPING_FILE);
-		self::$_skeleton_replacement = $replacement_manager->getReplacementClass($class_name);
+		
+		self::$_skeleton_replacement = $class_name;
 	}
 
 	public static function getSkeletonReplacement() {
-		return self::$_skeleton_replacement ;
+		$replacement_manager = ReplacementManager::getInstance(SKEBUILDER_REPLACEMENT_MAPPING_FILE);
+		return $replacement_manager->getReplacementClass(self::$_skeleton_replacement);
 	}
 }

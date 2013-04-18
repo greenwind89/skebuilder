@@ -13,8 +13,7 @@
   <!-- ... -->
   <testsuites>
      <testsuite name="My Test Suite">
-       <file>tests/filenodeTest.php</file>
-       <file>tests/foldernodeTest.php</file>
+       <directory>tests</directory>
      </testsuite>
    </testsuites>
 </phpunit>

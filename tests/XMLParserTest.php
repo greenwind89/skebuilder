@@ -16,8 +16,8 @@ class XMLparserTest extends PHPUnit_Framework_TestCase
 	{
 		$xml_parser = new XMLparser();
 		$data = $xml_parser->parse(SKEBUILDER_UNITTEST_SKELETON_DIR . 'unittest_default.xml');
-		var_dump($data);
-		var_dump(Skebuilder::getErrorMessages());
+		// var_dump($data);
+		// var_dump(Skebuilder::getErrorMessages());
 		$this->assertTrue(count($data) > 0);
 	}
 

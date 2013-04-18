@@ -6,7 +6,7 @@
 	</data>
 
 	<structure>
-		<node type='folder' name='upload'>
+		
 			<node type='folder' name='test1'>
 				<node type='folder' name='xml'>
 					<node type='file' name='testfile1.php'/>
@@ -20,7 +20,6 @@
 					<node type='file' name='testfile1.php' template='phpfox_block_default_class'/>
 				</node>
 			</node>
-		</node>
 
 	</structure>
 </skeleton>

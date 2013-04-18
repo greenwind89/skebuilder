@@ -23,19 +23,21 @@ class filenodeTest extends PHPUnit_Framework_TestCase
     }
 
     public function testCreateEmptyNode(){
+        $context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
         $node = new FileNode('');
 
-        $this->assertFalse($node->create(SKEBUILDER_UNITTEST_EXPERIMENT_DIR));
+        $this->assertFalse($node->create($context));
 
         $node = new FileNode('    ');
 
-        $this->assertFalse($node->create(SKEBUILDER_UNITTEST_EXPERIMENT_DIR));
+        $this->assertFalse($node->create($context));
     }
 
     public function testCreateWithoutTemplate(){
         $node = new FileNode('test.mm');
+        $context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
 
-        $node->create(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+        $node->create($context);
 
         $this->assertTrue(file_exists(SKEBUILDER_UNITTEST_EXPERIMENT_DIR . 'test.mm'));
 
@@ -48,9 +50,9 @@ class filenodeTest extends PHPUnit_Framework_TestCase
     {
         //setup
         $node = new FileNode('test.mm', SKEBUILDER_BASE_TEST . 'src/template/phpfox/phpfox_block_class.php'); 
-        
+        $context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
         //make change
-        $result = $node->create(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+        $result = $node->create($context);
 
         //expect
         $this->assertTrue($result);
@@ -68,8 +70,9 @@ class filenodeTest extends PHPUnit_Framework_TestCase
         // ----------------------------------------------------------------
         // setup your test
         $file_hanlder = fopen(SKEBUILDER_UNITTEST_EXPERIMENT_DIR . 'test.mm', 'w');
+        $context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
 
-        $node = new FileNode('test.mm', SKEBUILDER_BASE_TEST . 'src/template/phpfox/phpfox_block_class.php');
+        $node = new FileNode('test.mm', 'phpfox_block_default_class');
 
         // because writeTemplateToNewCreatedFile is a private method => we need to set it accessible first
         $method = new ReflectionMethod(
@@ -78,7 +81,7 @@ class filenodeTest extends PHPUnit_Framework_TestCase
         $method->setAccessible(TRUE);
  
         $this->assertTrue(
-            $method->invoke($node, $file_hanlder), Skebuilder::getErrorMessages()
+            $method->invoke($node, $file_hanlder,  $context), Skebuilder::getErrorMessages()
         );
 
         $this->assertTrue(file_exists(SKEBUILDER_UNITTEST_EXPERIMENT_DIR . 'test.mm'));

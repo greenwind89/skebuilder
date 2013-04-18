@@ -40,14 +40,16 @@ Class XMLParserDataToSkeletonArrayAdapter extends XMLParser implements parserInt
 			if(isset($value['node']))
 			{
 				$new_node = new FolderNode($value['name']);
+				$root_node->add($new_node);
 				//trick part here
 				//we do it because $value['node'] can be array of value of array of array 
 				//in case it is array of true value, we make it an array of array
 
 				$this->buildCompositeNodeTreeFromParsedArray(isset($value['node']['type']) ? array($value['node']) : $value['node'], $new_node);
 			}
-			else
+			else if(isset($value['type']))
 			{
+				
 				// it is a leaf
 				if($value['type'] === 'folder')
 				{
@@ -57,9 +59,12 @@ Class XMLParserDataToSkeletonArrayAdapter extends XMLParser implements parserInt
 				{
 					$new_node = new FileNode($value['name'], isset($value['template']) ? $value['template'] : null);
 				}
+				$root_node->add($new_node);
+			}
+			else {
+				$this->buildCompositeNodeTreeFromParsedArray($value, $root_node);	
 			}
 
-			$root_node->add($new_node);
 		}
 
 
