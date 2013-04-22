@@ -23,6 +23,7 @@
 							</node>
 
 							<node type='folder' name='block'>
+								<node type='file' name='category.class.php' template='phpfox_block_category_class'/>
 								<node type='file' name='index.html'/>
 							</node>
 
@@ -81,6 +82,7 @@
 					<node type='folder' name='template'>
 						<node type='folder' name='default'>
 							<node type='folder' name='block'>
+								<node type='file' name='category.html.php' template='phpfox_block_category_html'/>
 								<node type='file' name='index.html'/>
 							</node>
 
@@ -93,6 +95,7 @@
 									</node>
 									<node type='file' name='index.html'/>
 								</node>
+								<node type='file' name='index.html.php' template='phpfox_block_default_html'/>
 								<node type='file' name='index.html'/>
 							</node>
 							<node type='file' name='index.html'/>
