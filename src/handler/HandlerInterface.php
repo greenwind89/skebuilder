@@ -6,8 +6,8 @@
  * @author  		minhTA	
  */
 
-require(dirname(__FILE__) . './PhpfoxHandler.php');
-require(dirname(__FILE__) . './OxwallHandler.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'handler' . DIRECTORY_SEPARATOR . 'PhpfoxHandler.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'handler' . DIRECTORY_SEPARATOR . 'OxwallHandler.php');
 
 Interface HandlerInterface {
 

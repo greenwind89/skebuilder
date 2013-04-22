@@ -6,8 +6,8 @@
  * @author  		minhTA	
  */
 
-require(dirname(__FILE__) . './filenode.php');
-require(dirname(__FILE__) . './foldernode.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'node' . DIRECTORY_SEPARATOR . 'filenode.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'node' . DIRECTORY_SEPARATOR . 'foldernode.php');
 
 Interface NodeAbstract {
 	/**

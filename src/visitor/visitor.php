@@ -6,8 +6,8 @@
  * @author  		minhTA	
  */
 
-require(dirname(__FILE__) . './printVisitor.php');
-require(dirname(__FILE__) . './buildVisitor.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'visitor' . DIRECTORY_SEPARATOR . 'printVisitor.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'visitor' . DIRECTORY_SEPARATOR . 'buildVisitor.php');
 
 Interface Visitor {
 	public function visit($node);

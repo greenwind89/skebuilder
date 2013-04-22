@@ -6,7 +6,7 @@
  * @author  		minhTA	
  */
 
-require(dirname(__FILE__) . './Template.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'template' . DIRECTORY_SEPARATOR . 'Template.php');
 
 class TemplateManager{
 	/**

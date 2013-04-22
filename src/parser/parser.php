@@ -6,9 +6,9 @@
  * @author  		minhTA	
  */
 
-require(dirname(__FILE__) . './XMLParser.php');
-require(dirname(__FILE__) . './parserInterface.php');
-require(dirname(__FILE__) . './XMLParserDataToSkeletonArrayAdapter.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'parser' . DIRECTORY_SEPARATOR . 'XMLParser.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'parser' . DIRECTORY_SEPARATOR . 'parserInterface.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'parser' . DIRECTORY_SEPARATOR . 'XMLParserDataToSkeletonArrayAdapter.php');
 
 
 Class parser{

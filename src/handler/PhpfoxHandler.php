@@ -11,7 +11,15 @@ Class PhpfoxHandler implements HandlerInterface{
 	public function process() {
 		if(count($_POST) > 0)
 		{
-			$this->_downloadNewPackage();
+			if(isset($_POST['generate']))
+			{
+				$this->_downloadNewPackage();
+			}
+			else
+			{
+				$this->_printNewPackage();
+			}
+			
 		}
 		else {
 			require(SKEBUILDER_BASE . 'view' . DIRECTORY_SEPARATOR . 'phpfox.php');
@@ -35,11 +43,11 @@ Class PhpfoxHandler implements HandlerInterface{
 		$context->setModuleName($module_name);
 		$context->setPackageId($package_id);
 		$context->setItemName($item_name);
-		$context->setAuthorName($author_name);
+		$context->setAuthorName($author_name);	
 
 		$xml_parser = new parser();
 
-		$data = $xml_parser->parseSkeleton(SKEBUILDER_SKELETON_DIR . $skeleton_name. '.xml');
+		$data = $xml_parser->parseSkeleton(SKEBUILDER_PHPFOX_SKELETON_LIB . $skeleton_name. '.xml');
 		$build_visitor = new buildVisitor($context);
 		$data->accept($build_visitor);
 
@@ -57,5 +65,30 @@ Class PhpfoxHandler implements HandlerInterface{
 
 		echo 'Thank you';
 		exit;
+	}
+
+
+
+	private function _printNewPackage() {
+
+		//wnaring duplicate code here
+		$module_name = $_POST['module_name'];
+		$package_id = $_POST['package_id'];
+		$skeleton_name = $_POST['skeleton_name'];
+		$item_name = $_POST['item_name'];
+		$author_name = $_POST['author_name'];
+
+
+		$context = new Context(SKEBUILDER_CACHE_DIR);
+		$context->setModuleName($module_name);
+		$context->setPackageId($package_id);
+		$context->setItemName($item_name);
+		$context->setAuthorName($author_name);	
+
+		$xml_parser = new parser();
+
+		$data = $xml_parser->parseSkeleton(SKEBUILDER_PHPFOX_SKELETON_LIB . $skeleton_name. '.xml');
+		$print_visitor = new printVisitor($context);
+		$data->accept($print_visitor);
 	}
 }

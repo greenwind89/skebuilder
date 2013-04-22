@@ -6,21 +6,21 @@
  * @author  		minhTA	
  */
 
-// define('SKEBUILDER_BASE', realpath(dirname(__FILE__) . '/..') . DIRECTORY_SEPARATOR);
+// define('SKEBUILDER_BASE', realpath(SKEBUILDER_SRC_DIR . '/..') . DIRECTORY_SEPARATOR);
 
 
 
-require(dirname(__FILE__) . './handler/HandlerInterface.php');
-require(dirname(__FILE__) . './helpers.php');
-require(dirname(__FILE__) . './archive.php');
-require(dirname(__FILE__) . './context.php');
-require(dirname(__FILE__) . './skeleton/skeletonCollection.php');
-require(dirname(__FILE__) . './node/NodeAbstract.php');
-require(dirname(__FILE__) . './parser/parser.php');
-require(dirname(__FILE__) . './visitor/visitor.php');
-require(dirname(__FILE__) . './template/TemplateManager.php');
-require(dirname(__FILE__) . './replacement/ReplacementManager.php');
-require(dirname(__FILE__) . './request.php');
+require(SKEBUILDER_SRC_DIR . 'handler' . DIRECTORY_SEPARATOR . 'HandlerInterface.php');
+require(SKEBUILDER_SRC_DIR . 'helpers.php');
+require(SKEBUILDER_SRC_DIR . 'archive.php');
+require(SKEBUILDER_SRC_DIR . 'context.php');
+require(SKEBUILDER_SRC_DIR . 'skeleton/skeletonCollection.php');
+require(SKEBUILDER_SRC_DIR . 'node/NodeAbstract.php');
+require(SKEBUILDER_SRC_DIR . 'parser/parser.php');
+require(SKEBUILDER_SRC_DIR . 'visitor/visitor.php');
+require(SKEBUILDER_SRC_DIR . 'template/TemplateManager.php');
+require(SKEBUILDER_SRC_DIR . 'replacement/ReplacementManager.php');
+require(SKEBUILDER_SRC_DIR . 'request.php');
 
 Class Skebuilder {
 

@@ -6,8 +6,8 @@
  * @author  		minhTA	
  */
 
-require(dirname(__FILE__) . './ReplacementCore.php');
-require(dirname(__FILE__) . './ReplacementDefault.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'replacement' . DIRECTORY_SEPARATOR . 'ReplacementCore.php');
+require(SKEBUILDER_SRC_DIR . DIRECTORY_SEPARATOR . 'replacement' . DIRECTORY_SEPARATOR . 'ReplacementDefault.php');
 
 class ReplacementManager{
 

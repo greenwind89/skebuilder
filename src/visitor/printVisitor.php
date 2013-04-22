@@ -27,6 +27,8 @@ class PrintVisitor implements visitor{
 		
 		$this->_context->push($node);
 		$this->_context->printCurrentStack();
+
+		echo '<br>';
 	}
 
 	public function leave($node){
