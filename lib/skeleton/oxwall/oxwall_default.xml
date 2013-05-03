@@ -1,0 +1,45 @@
+<skeleton>
+	<data>
+		<skeleton_id>oxwall_default</skeleton_id>
+		<replacement_class>ReplacementOxwall</replacement_class>
+		<description>a skeleton for default Oxwall</description>
+	</data>
+
+	<structure>
+		<node type='folder' name='upload'>
+			<node type='file' name='activate.php'/>
+			<node type='file' name='deactivate.php'/>
+			<node type='file' name='cron.php'/>
+			<node type='file' name='init.php'/>
+			<node type='file' name='deactivate.php'/>
+			<node type='file' name='install.php'/>
+			<node type='file' name='uninstall.php'/>
+			<node type='file' name='plugin.xml'/>
+			<node type='folder' name='bol'>
+
+			</node>
+			<node type='folder' name='classes'>
+				
+			</node>
+			<node type='folder' name='components'>
+
+			</node>
+			<node type='folder' name='controllers'>
+
+			</node>
+			<node type='folder' name='update'>
+
+			</node>
+			<node type='folder' name='views'>
+				<node type='folder' name='components'>
+
+				</node>
+
+				<node type='folder' name='controllers'>
+
+				</node>
+			</node>
+		</node>
+
+	</structure>
+</skeleton>
