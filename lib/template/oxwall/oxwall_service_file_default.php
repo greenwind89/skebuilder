@@ -8,7 +8,7 @@
  * @package         Module_[skebuilder:module_name]
  */
 
-finale class [skebuilder:bol_class_name] 
+final class [skebuilder:bol_class_name] 
 {
     
 }

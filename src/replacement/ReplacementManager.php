@@ -40,6 +40,7 @@ class ReplacementManager{
 	private function __construct($template_replacement_mapping_file)
 	{
 		$XMLParser = new XMLParser;
+
 		if(file_exists($template_replacement_mapping_file))
 		{
 			$list = $XMLParser->parse($template_replacement_mapping_file);
@@ -75,6 +76,8 @@ class ReplacementManager{
 		if(file_exists(SKEBUILDER_SRC_DIR . 'replacement' . DIRECTORY_SEPARATOR . $class_name . '.php'))
 		{
 			require_once(SKEBUILDER_SRC_DIR . 'replacement' . DIRECTORY_SEPARATOR . $class_name . '.php');
+
+			// echo 'get replacement . ' . $class_name . "\n";
 			return new $class_name();
 		}
 		else

@@ -25,7 +25,8 @@ class ReplacementOxwall extends ReplacementCore{
 		'bol_class_name',
 		'class_class_name',
 		'component_class_name',
-		'controller_class_name'
+		'controller_class_name',
+		'author'
 
 		);
 
@@ -48,7 +49,7 @@ class ReplacementOxwall extends ReplacementCore{
 		$this->addKeyValueIntoReplacementList('class_class_name', $this->getClassName('class'));
 		$this->addKeyValueIntoReplacementList('component_class_name', $this->getClassName('component'));
 		$this->addKeyValueIntoReplacementList('controller_class_name', $this->getClassName('controller'));
-
+		$this->addKeyValueIntoReplacementList('author', $this->context->getAuthorName());
 
 	}
 

@@ -1,0 +1,86 @@
+<skeleton>
+	<data>
+		<skeleton_id>oxwall_ynnews</skeleton_id>
+		<replacement_class>ReplacementOxwall</replacement_class>
+		<description>a skeleton for default Oxwall</description>
+	</data>
+
+	<structure>
+		<node type='folder' name='upload'>
+			<node type='folder' name='[skebuilder:module_name]'>
+
+				<node type='file' name='activate.php'/>
+				<node type='file' name='deactivate.php'/>
+				<node type='file' name='cron.php'/>
+				<node type='file' name='init.php'/>
+				<node type='file' name='install.php'/>
+				<node type='file' name='uninstall.php'/>
+				<node type='file' name='plugin.xml'/>
+				<node type='file' name='index.html'/>
+
+				<node type='folder' name='bol'>
+
+					<node type='file' name='news.php' template='oxwall_dto_file_default'/>
+					<node type='file' name='news_dao.php' template='oxwall_dao_file_default'/>
+					<node type='file' name='news_service.php' template='oxwall_service_file_default'/>
+
+					<node type='file' name='rss_link.php' template='oxwall_dto_file_default'/>
+					<node type='file' name='rss_link_dao.php' template='oxwall_dao_file_default'/>
+					<node type='file' name='rss_link_service.php' template='oxwall_service_file_default'/>
+
+					<node type='file' name='category.php' template='oxwall_dto_file_default'/>
+					<node type='file' name='category_dao.php' template='oxwall_dao_file_default'/>
+					<node type='file' name='category_service.php' template='oxwall_service_file_default'/>
+
+					<node type='file' name='index.html'/>
+				</node>
+				<node type='folder' name='classes'>
+					<node type='file' name='index.html'/>
+				</node>
+				<node type='folder' name='components'>
+					<node type='file' name='category_widget.php' template='oxwall_component_widget_file_default'/>
+					<node type='file' name='slidehow_widget.php' template='oxwall_component_widget_file_default'/>
+					<node type='file' name='top_news_widget.php' template='oxwall_component_widget_file_default'/>
+					<node type='file' name='index.html'/>
+				</node>
+				<node type='folder' name='controllers'>
+					<node type='file' name='news.php' template='oxwall_controller_file_default'/>
+					<node type='file' name='rss.php' template='oxwall_controller_file_default'/>
+					<node type='file' name='category.php' template='oxwall_controller_file_default'/>
+					<node type='file' name='admin.php' template='oxwall_controller_file_default'/>
+					<node type='file' name='index.html'/>
+				</node>
+				<node type='folder' name='static'>
+					<node type='folder' name='img'>
+						<node type='file' name='index.html'/>
+					</node>
+					<node type='folder' name='js'>
+						<node type='file' name='ynnews.js'/>
+						<node type='file' name='index.html'/>
+					</node>
+					<node type='folder' name='css'>
+						<node type='file' name='ynnews.css'/>
+						<node type='file' name='index.html'/>
+					</node>
+				</node>
+
+				<node type='folder' name='update'>
+					<node type='file' name='index.html'/>
+				</node>
+				<node type='folder' name='views'>
+					<node type='folder' name='components'>
+						<node type='file' name='category_widget.html' />
+						<node type='file' name='slidehow_widget.html' />
+						<node type='file' name='top_news_widget.html' />
+						<node type='file' name='index.html'/>
+					</node>
+
+					<node type='folder' name='controllers'>
+						<node type='file' name='index.html'/>
+					</node>
+				</node>
+			</node>
+		</node>
+
+	</structure>
+</skeleton>

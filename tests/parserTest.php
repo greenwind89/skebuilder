@@ -53,15 +53,31 @@ class parserTest extends PHPUnit_Framework_TestCase
 	// }
 	// 
 	// 
-	public function testParseAFile()
+	// public function testParseAFile()
+	// {
+	// 	$context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+	// 	$xml_parser = new parser();
+	// 	$data = $xml_parser->parseSkeleton(SKEBUILDER_UNITTEST_SKELETON_DIR . 'unittest_default.xml');
+		
+	// 	$print_visitor = new printVisitor($context);
+	// 	$data->accept($print_visitor);
+	// 	// var_dump($data);
+	// }
+
+	public function testParseWithVisitorPattern1()
 	{
 		$context = new Context(SKEBUILDER_UNITTEST_EXPERIMENT_DIR);
+		 $context->setModuleName('ynnews');
+		 $context->setAuthorName('MinhTA');
 		$xml_parser = new parser();
-		$data = $xml_parser->parseSkeleton(SKEBUILDER_UNITTEST_SKELETON_DIR . 'unittest_default.xml');
-		
-		$print_visitor = new printVisitor($context);
-		$data->accept($print_visitor);
-		// var_dump($data);
+
+		$data = $xml_parser->parseSkeleton(SKEBUILDER_UNITTEST_SKELETON_DIR . 'oxwall/oxwall_ynnews.xml');
+		$build_visitor = new buildVisitor($context);
+		$data->accept($build_visitor);
+		// 		$print_visitor = new printVisitor($context);
+		// $data->accept($print_visitor);
+
+		// var_dump(Skebuilder::getErrorMessages());
 	}
 
 		
