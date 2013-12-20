@@ -16,6 +16,7 @@ Class XMLParserDataToSkeletonArrayAdapter extends XMLParser implements parserInt
 	public function parseSkeleton($file_path)
 	{
 		$data = $this->parse($file_path);
+
 		if(isset($data['data']['replacement_class']))
 		{
 			Skebuilder::setSkeletonReplacement($data['data']['replacement_class']);

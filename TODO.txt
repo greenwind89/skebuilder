@@ -1,4 +1,5 @@
 - Refactoring src into libs and services architecture
 - Modify architect to adapt with unit test
 - Documenting overall architecture 
-- 
+- Adding online editting tools 
+- Supporting deploy new sites 

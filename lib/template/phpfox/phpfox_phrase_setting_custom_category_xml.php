@@ -12,18 +12,13 @@
 		<menu module_id="[skebuilder:module_name]" parent_var_name="" m_connection="main" var_name="menu_[skebuilder:module_name]_[skebuilder:module_name]_fad58de7366495db4650cfefac2fcd61" ordering="131" url_value="[skebuilder:module_name]" version_id="3.3.0" disallow_access="" module="[skebuilder:module_name]" />
 	</menus>
 	<settings>
-		<setting group="" module_id="[skebuilder:module_name]" is_hidden="0" type="integer" var_name="subcategories_to_show_at_first" phrase_var_name="setting_subcategories_to_show_at_first" ordering="1" version_id="3.4.0">10</setting>
+		
 	</settings>
 	<blocks>
-		<block type_id="0" m_connection="[skebuilder:module_name].index" module_id="[skebuilder:module_name]" component="category" location="1" is_active="1" ordering="1" disallow_access="" can_move="0">
-			<title>Categories</title>
-			<source_code />
-			<source_parsed />
-		</block>
+
 	</blocks>
 	<components>
-		<component module_id="[skebuilder:module_name]" component="index" m_connection="[skebuilder:module_name].index" module="[skebuilder:module_name]" is_controller="1" is_block="0" is_active="1" />
-		<component module_id="[skebuilder:module_name]" component="category" m_connection="" module="[skebuilder:module_name]" is_controller="0" is_block="1" is_active="1" />
+		
 	</components>
 	<phrases>
 		<phrase module_id="[skebuilder:module_name]" version_id="3.3.0" var_name="menu_[skebuilder:module_name]_[skebuilder:module_name]_fad58de7366495db4650cfefac2fcd61" added="1350926319">[skebuilder:module_name_upper_first]</phrase>
@@ -47,15 +42,6 @@
 		<phrase module_id="[skebuilder:module_name]" version_id="3.3.0" var_name="select" added="1350926125">Select</phrase>
 		<phrase module_id="[skebuilder:module_name]" version_id="3.3.0" var_name="select_a_sub_category" added="1350926125">Select a Sub-Category</phrase>
 		<phrase module_id="[skebuilder:module_name]" version_id="3.3.0" var_name="update_order" added="1350926125">Update Order</phrase>
-		<phrase module_id="[skebuilder:module_name]" version_id="3.3.0" var_name="categories" added="1350926125">Categories</phrase>
-		<phrase module_id="[skebuilder:module_name]" version_id="3.3.0" var_name="sub_categories" added="1350926125">Sub-Categories</phrase>
-
-		<phrase module_id="[skebuilder:module_name]" version_id="3.4.0" var_name="setting_subcategories_to_show_at_first" added="1360317749"><![CDATA[<title>How many subcategories to show at first</title><info>This setting tells how many subcategories are to be shown at first. If the list of subcategories is longer than this value the extra ones will be hidden and a "View More" option will be shown instead, allowing the user to display the hidden subcategories. 
-
-a "View Less" option will be available to provide the full "accordion" effect. 
-
-If you set it to zero ("0" without quotes) it will hide every subcategory and a plus sign will show next to the category name, clicking the plus sign will show that category&#039;s subcategories.</info>]]></phrase>
-
 	</phrases>
 	<user_group_settings>
 		
